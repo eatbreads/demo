@@ -14,4 +14,6 @@ public interface IUserService {
     User update(UserDto user);
 
     void login(String userName, String password);
+    // 新增方法：获取个人信息
+    User getProfile(Integer userId);  // 根据用户 ID 获取用户信息
 }

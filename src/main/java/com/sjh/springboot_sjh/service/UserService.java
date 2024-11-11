@@ -56,6 +56,13 @@ public class UserService implements IUserService {
         }
     }
 
+    @Override
+    public User getProfile(Integer userId) {
+        // 根据用户 ID 获取用户信息
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
 
 }
 

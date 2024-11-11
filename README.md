@@ -130,3 +130,24 @@ URL: http://localhost:8080/user
 }
 }
 ```
+
+
+方法：GET
+URL：http://<your-host>/user/profile
+请求头：
+userId: 1 （假设当前登录的用户 ID 为 1）
+点击 Send，然后返回结果应该是用户信息。 
+示例响应
+成功响应：
+```json
+{
+"code": 200,
+"message": "success",
+"data": {
+"userId": 1,
+"userName": "testUser",
+"password": "password123",
+"email": "testuser@example.com"
+}
+}
+```

@@ -45,4 +45,11 @@ public class UserController {
             return new ResponseMessage<>(HttpStatus.UNAUTHORIZED.value(), e.getMessage(), null);
         }
     }
+
+    // 获取个人信息
+    @GetMapping("/profile")
+    public ResponseMessage<User> getProfile(@RequestHeader("userId") Integer userId) {
+        User user = userService.get(userId); // 获取用户信息
+        return ResponseMessage.success(user); // 返回用户信息
+    }
 }

@@ -12,4 +12,6 @@ public interface IUserService {
     User get(Integer userId);
 
     User update(UserDto user);
+
+    void login(String userName, String password);
 }

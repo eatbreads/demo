@@ -47,6 +47,15 @@ public class UserService implements IUserService {
         return userRepository.save(userPojo);
     }
 
+    @Override
+    public void login(String userName, String password) {
+        User user = userRepository.findByUserName(userName)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        if (!user.getPassword().equals(password)) {
+            throw new RuntimeException("Incorrect password");
+        }
+    }
+
 
 }
 

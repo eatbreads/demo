@@ -6,6 +6,7 @@ import com.sjh.springboot_sjh.pojo.User;
 import com.sjh.springboot_sjh.pojo.dto.UserDto;
 import com.sjh.springboot_sjh.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,5 +35,14 @@ public class UserController {
     {
         User userNew = userService.update(user);
         return ResponseMessage.success(userNew);
+    }
+    @PostMapping("/login")
+    public ResponseMessage<String> login(@RequestBody UserDto user) {
+        try {
+            userService.login(user.getUserName(), user.getPassword());
+            return ResponseMessage.success("Login successful");
+        } catch (RuntimeException e) {
+            return new ResponseMessage<>(HttpStatus.UNAUTHORIZED.value(), e.getMessage(), null);
+        }
     }
 }
